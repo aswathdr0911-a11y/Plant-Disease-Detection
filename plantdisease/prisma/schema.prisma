@@ -10,5 +10,35 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  username        String    @unique
+  password        String
+  email           String    @unique
+  createdAt       DateTime  @default(now())
+  plantHistory    PlantHistory[]  @relation("UserRelation")
+}
+
+model Plant {
+  id                  Int     @id @default(autoincrement())                  
+  careTips            String
+  optimumConditions   String
+  commonDiseases      String
+  species             String
+  image               String
+  saveHistory         PlantHistory[]  @relation("PlantRelation")
+}
+
+model PlantHistory  {
+  id        Int       @id @default(autoincrement())
+  time      DateTime
+  plantId   Int
+  plant     Plant     @relation("PlantRelation", fields: [plantId], references: [id])
+  userId    Int
+  user      User      @relation("UserRelation", fields: [userId], references: [id])
+
 }
