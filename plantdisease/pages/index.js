@@ -1,33 +1,46 @@
 import Head from "next/head";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>PlantPal</title>
-        <meta name="description" content="Detect plant diseases and identify plant species using AI" />
+        <meta
+          name="description"
+          content="Detect plant diseases and identify plant species using AI"
+        />
       </Head>
 
+      <Navbar />
       <main style={styles.main}>
-        <section style={styles.hero}>
+        {/* Top Right Profile Icon */}
+        <div style={styles.profileIcon}>👤</div>
+
+        {/* Center Hero Card */}
+        <section style={styles.heroCard}>
           <h1 style={styles.title}>🌱 PlantPal</h1>
           <p style={styles.subtitle}>
-            Your AI-powered companion for plant health and identification.
+            Your online companion for plant health and identification
           </p>
-        </section>
 
-        <section style={styles.features}>
-          <h2 style={styles.heading}>What PlantPal Can Do</h2>
-          <ul style={styles.list}>
-            <li>🌿 Detect plant diseases from images</li>
-            <li>🔍 Identify plant species accurately</li>
-            <li>📊 Provide health insights and care tips</li>
-          </ul>
-        </section>
+          <div style={styles.features}>
+            <ul style={styles.list}>
+              <li>🌿 Detect plant diseases from images</li>
+              <li>🔍 Identify plant species accurately</li>
+              <li>📊 Get health insights and care tips</li>
+            </ul>
+          </div>
 
-        <section style={styles.cta}>
           <button style={styles.button}>Get Started</button>
         </section>
+
+        {/* Bottom Quote */}
+        <footer style={styles.footer}>
+          <p style={styles.quote}>
+            “Building a greener, cleaner world.”
+          </p>
+        </footer>
       </main>
     </>
   );
@@ -36,49 +49,74 @@ export default function Home() {
 const styles = {
   main: {
     minHeight: "100vh",
+    background: "linear-gradient(#f4f9f4, #e6f2e6)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
     fontFamily: "Arial, sans-serif",
-    backgroundColor: "#f4f9f4",
     color: "#2f4f2f",
-    padding: "40px",
   },
-  hero: {
+
+  profileIcon: {
+    position: "absolute",
+    top: "20px",
+    right: "30px",
+    fontSize: "1.6rem",
+    cursor: "pointer",
+  },
+
+  heroCard: {
+    backgroundColor: "#ffffff",
+    padding: "50px 60px",
+    borderRadius: "16px",
+    boxShadow: "0 15px 40px rgba(0,0,0,0.12)",
     textAlign: "center",
-    marginBottom: "60px",
+    maxWidth: "500px",
   },
+
   title: {
     fontSize: "3rem",
-    marginBottom: "10px",
+    marginBottom: "12px",
   },
+
   subtitle: {
-    fontSize: "1.2rem",
-    maxWidth: "600px",
-    margin: "0 auto",
+    fontSize: "1.1rem",
+    marginBottom: "30px",
+    color: "#4f6f4f",
   },
+
   features: {
-    maxWidth: "700px",
-    margin: "0 auto 60px auto",
+    marginBottom: "30px",
   },
-  heading: {
-    fontSize: "1.8rem",
-    marginBottom: "20px",
-    textAlign: "center",
-  },
+
   list: {
     listStyle: "none",
     padding: 0,
-    fontSize: "1.1rem",
+    fontSize: "1.05rem",
     lineHeight: "2rem",
   },
-  cta: {
-    textAlign: "center",
-  },
+
   button: {
-    padding: "12px 30px",
+    padding: "14px 36px",
     fontSize: "1rem",
     backgroundColor: "#4caf50",
     color: "white",
     border: "none",
-    borderRadius: "6px",
+    borderRadius: "8px",
     cursor: "pointer",
+  },
+
+  footer: {
+    position: "absolute",
+    bottom: "20px",
+    textAlign: "center",
+    width: "100%",
+  },
+
+  quote: {
+    fontSize: "0.9rem",
+    color: "#6b8f6b",
+    fontStyle: "italic",
   },
 };
